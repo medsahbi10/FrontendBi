@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-green text-uppercase fixed-top" id="mainNav">
+    <style>
+        .bg-green {
+            background-color: #09134C; /* Change this color code to your desired shade of green */
+        }
+        .navbar-logo {
+    width:50px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */}
+        body {
+                margin: 0;
+                padding-top: 50px; /* Adjust this value to match the height of your navbar */
+                overflow: auto; /* Prevent scrolling on the body */
+            }
+            iframe {
+                position: fixed;
+                top: 105px; /* Adjust this value to match the height of your navbar */
+                width: 100%;
+                height: calc(100vh - 70px); /* Calculate the remaining height of the viewport */
+                border: none;
+            }
+        /* Add any other custom styles you need */
+    </style>
+    <div class="container">
+        <a class="navbar-brand" >
+            <img src="../../assets/imm-removebg-preview.png" alt="PGS International Logo" class="me-2 navbar-logo"> <!-- Add your logo image here -->
+            PGS International
+        </a>          <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" routerLink="/userMT">User List</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/front/" (click)="logout()">Log Out</a></li>
+  
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <iframe title="PGS_final (1)" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=cb3103db-ef29-4e74-a203-c7f4f0e03554&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730" frameborder="0" allowFullScreen="true"></iframe>

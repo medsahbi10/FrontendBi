@@ -1,0 +1,97 @@
+<style>
+  body {
+      padding-top: 70px; /* Adjust as needed to match the height of your navbar */
+  }
+</style>
+<nav class="navbar navbar-expand-lg bg-green text-uppercase fixed-top" id="mainNav">
+  
+  <style>
+      .bg-green {
+          background-color: #09134C; /* Change this color code to your desired shade of green */
+      }
+      .navbar-logo {
+    width:50px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+  </style>
+  <div class="container">
+    <a class="navbar-brand" >
+      <img src="../../assets/imm-removebg-preview.png" alt="PGS International Logo" class="me-2 navbar-logo"> <!-- Add your logo image here -->
+      PGS International
+  </a>      <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" routerLink="/dashboard">Over View</a></li>
+              <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"  (click)="logout()" >Log Out</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<body>
+  
+<div class="container mt-5"> <!-- Add margin-top to create space below the fixed navbar -->
+  <button class="btn btn-primary mb-3" (click)="togglePopup()">Add User</button>
+
+  <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users$ | async">
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.role }}</td>
+              <td>{{user.email}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div></div>
+        
+        
+        <div *ngIf="showPopup" class="popup">
+          <div class="popup-content">
+            <h5>Sign Up</h5>
+            <form>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="newUser.username">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="newUser.password">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="newUser.email">
+              </div>
+              <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select" id="role" name="role" [(ngModel)]="newUser.role">
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="CONTROL_QUALITY">CONTROL_QUALITY</option>
+                  <option value="DEMAND_INSIGHT">DEMAND_INSIGHT</option>
+                  <option value="LOGISTICS">LOGISTICS</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="addUser()">Register</button>
+              <button class="close-button" (click)="togglePopup()">X</button>
+
+            </form>
+          </div>
+        </div>
+        
+
